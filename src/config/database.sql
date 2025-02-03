@@ -37,17 +37,3 @@ CREATE TABLE IF NOT EXISTS attendees (
     FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE,   
     UNIQUE(event_id, user_id) 
 );
-
-INSERT INTO users (name, email, phone, password, role) 
-VALUES 
-('asifislam', 'admin@gmail.com', '1234567890', 'hashedPassword12', 'admin'),
-('asifuser', 'user@gmail.com', '12330987654', 'hashedpassworduser12', 'user');
-
--- Insert Events Using Subquery Instead of Variable
-INSERT INTO events (title, description, start_date, end_date, location, price, duration, max_capacity, created_by) 
-VALUES
-('Technology Conference 2025', 'A technology conference for developers', NOW(), DATE_ADD(NOW(), INTERVAL 1 DAY), 'Dhaka', '300', 2, 200, 
-(SELECT id FROM users WHERE email = 'admin@gmail.com' LIMIT 1)),
-
-('Web Development Bootcamp', 'Bootcamp to learn web development', NOW(), DATE_ADD(NOW(), INTERVAL 5 DAY), 'Dinajpur', '500', 3, 300, 
-(SELECT id FROM users WHERE email = 'admin@gmail.com' LIMIT 1));

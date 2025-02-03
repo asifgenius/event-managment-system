@@ -122,10 +122,7 @@ $('#searchButton').on('click', function () {
 });
 $(document).on('click', '.deleteEventBtn', function (e) {
     e.preventDefault();
-
     let eventId = $(this).data('id');
-    console.log('Deleting event with ID:', eventId);
-
     if (!confirm('Are you sure you want to delete this event?')) {
         return;
     }
@@ -144,7 +141,6 @@ $(document).on('click', '.deleteEventBtn', function (e) {
             $(`.deleteEventBtn[data-id="${eventId}"]`).closest('.card').fadeOut(500, function () {
                 $(this).remove();
             });
-
             alert('Event deleted successfully.');
         },
         error: function (xhr, status, error) {

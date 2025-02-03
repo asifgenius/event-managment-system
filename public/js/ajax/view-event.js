@@ -1,11 +1,8 @@
 $(document).ready(function () {
 
-    function getQueryParam(param) {
-        var urlParams = new URLSearchParams(window.location.search);
-        return urlParams.get(param);
-    }
     var eventId = document.getElementById("eventId").value;
     if (!eventId) {
+
         $("#eventTitle").text("Event ID not provided").addClass('text-danger');
         return;
     }

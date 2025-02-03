@@ -12,7 +12,10 @@ body {
     height: calc(100vh - 112px) !important;
     overflow: auto;
 }
-
+.auth-dashboard{
+    min-height: 100vh;
+    overflow-y: scroll;
+}
 .content-area {
     flex: 1 0 auto;
     padding: 20px;
