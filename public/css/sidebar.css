@@ -1,0 +1,59 @@
+    .sidebar {
+        width: 198px;
+        height: 100vh;
+        background: #343a40;
+        transition: width 0.3s ease-in-out;
+        overflow: hidden;
+    }
+
+    .sidebar.expanded {
+        width: 198px;
+        z-index: 1;
+    }
+
+    .sidebar ul {
+        padding-left: 0;
+    }
+
+    .sidebar ul li {
+        list-style: none;
+    }
+
+    .sidebar ul li a {
+        color: white;
+        padding: 10px;
+        display: block;
+        text-decoration: none;
+        transition: 0.3s;
+    }
+
+    .sidebar ul li a:hover {
+        background: #495057;
+    }
+
+    .sidebar .toggle-btn {
+        width: 100%;
+        background: #212529;
+        color: white;
+        border: none;
+        text-align: left;
+        padding: 10px;
+        cursor: pointer;
+        transition: background 0.3s;
+    }
+
+    .sidebar .toggle-btn:hover {
+        background: #495057;
+    }
+
+    .sidebar .dropdown-menu {
+        background: #495057;
+    }
+
+    .sidebar .dropdown-item {
+        color: white;
+    }
+
+    .sidebar .dropdown-item:hover {
+        background: #6c757d;
+    }

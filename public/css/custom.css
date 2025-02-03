@@ -1,0 +1,49 @@
+html,
+body {
+    height: 100%;
+    margin: 0;
+    overflow: hidden;
+}
+
+.content {
+    flex: 1 0 auto;
+    padding: 20px;
+    width: calc(100% -198px);
+    height: calc(100vh - 112px) !important;
+    overflow: auto;
+}
+
+.content-area {
+    flex: 1 0 auto;
+    padding: 20px;
+    width: calc(100% -198px);
+    height: calc(100vh - 112px) !important;
+}
+
+.dashboard-container {
+    height: calc(100vh - 55px);
+    width: calc(100% - 198px);
+    width: 100%;
+    overflow: auto;
+}
+
+.footer {
+    height: 50px;
+    background-color: #f0f0f0;
+    background-color: #32478b;
+    padding: 10px;
+    text-align: center;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+}
+
+.form-shadow {
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px !important;
+}
+
+.toast {
+    -webkit-box-shadow: unset !important;
+    box-shadow: unset !important;
+    opacity: 1 !important;
+}
