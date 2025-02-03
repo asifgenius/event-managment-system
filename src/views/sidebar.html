@@ -1,0 +1,27 @@
+<?php 
+ob_start();
+?>
+<div class="sidebar expanded" id="sidebar">
+    <ul class="nav flex-column">
+        <li class="nav-item">
+            <a href="/event_managment/dashboard" class="nav-link"><i class="fa fa-tachometer mx-1"
+                    aria-hidden="true"></i> Dashboard</a>
+        </li>
+        <li class="nav-item">
+        </li>
+        <li class="nav-item dropdown">
+            <a href="/event_managment/events" class="nav-link dropdown-toggle" href="#" role="button"
+                data-bs-toggle="dropdown">Events Management</a>
+            <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="/event_managment/events">Add Event</a></li>
+                <li><a class="dropdown-item" href="/event_managment/dashboard">Event List</a></li>
+            </ul>
+        </li>
+
+    </ul>
+</div>
+
+<?php
+$content = ob_get_clean(); 
+include __DIR__ . '/layout/dashboard_layout.html'; 
+?>
