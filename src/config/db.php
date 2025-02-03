@@ -5,7 +5,7 @@ class Database {
     private $dbname = 'event_management_system';
     private $username = 'root';
     private $password = '';
-
+    
     private function __construct() {
         try {
             self::$connection = new PDO(

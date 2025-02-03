@@ -11,9 +11,8 @@ $(document).ready(function () {
             success: function (response) {
                 if (response.success) {
                     successMessageNotify(response.message)
-                    $('#responseMessage').html('<p style="color: green;">' + response.success + '</p>');
                 } else {
-                    $('#responseMessage').html('<p style="color: red;">' + response.error + '</p>');
+                    errorMessageNotify(response.error)
                 }
             },
             error: function (xhr, status, error) {

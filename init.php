@@ -47,7 +47,7 @@ try {
         "title" => "Web Development Bootcamp",
         "description" => "Bootcamp to learn web development",
         "start_date" => date('Y-m-d H:i:s'), 
-        "end_date" => date('Y-m-d H:i:s', strtotime('+5 days')), // Five days later
+        "end_date" => date('Y-m-d H:i:s', strtotime('+5 days')),
         "location" => "Dinajpur",
         "price" => 500.00,
         "duration" => 3,
