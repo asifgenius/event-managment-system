@@ -30,29 +30,31 @@ class UserService extends BaseService
 
     public function login($email, $password)
     {
+        if (session_status() == PHP_SESSION_NONE) {
+            session_start();
+        }
+
         $stmt = $this->connect->prepare("SELECT id, name, role, password FROM users WHERE email = ?");
         $stmt->execute([$email]);
         $user = $stmt->fetch(PDO::FETCH_ASSOC);
 
         if ($user && password_verify($password, $user['password'])) {
-            
             $_SESSION['user_id'] = $user['id'];
             $_SESSION['role'] = $user['role'];
             return $user;
         } else {
-            return ['error' => "Invalid email or password."];
+            return false;
         }
     }
 
     public function getUsers()
     {
-        $sql = "SELECT e.*, u.name AS creator 
-                FROM events e 
-                JOIN users u ON e.created_by = u.id 
+        $sql = "SELECT e.*, u.name AS creator
+                FROM events e
+                JOIN users u ON e.created_by = u.id
                 ORDER BY e.start_date ASC";
         $stmt = $this->connect->query($sql);
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 }
-
 ?>

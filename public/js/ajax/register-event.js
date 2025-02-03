@@ -1,5 +1,5 @@
 $(document).ready(function () {
- 
+
   var eventId = document.getElementById("eventId").value;
 
   $.ajax({

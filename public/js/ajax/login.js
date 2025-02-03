@@ -8,12 +8,11 @@ $(document).ready(function () {
             data: formData,
             dataType: 'json',
             success: function (response) {
-                console.log('asasas',response);
-                
                 if (response.success) {
+                    successMessageNotify(response.success)
                     window.location.href = '/event_managment/dashboard';
                 } else {
-                    $('#errorMessage').text(response.message).show();
+                    successMessageNotify(response.message)
                 }
             },
             error: function (xhr, status, error) {
