@@ -1,0 +1,6 @@
+RewriteEngine On
+RewriteBase /event_managment
+
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^ index.php [QSA,L]
