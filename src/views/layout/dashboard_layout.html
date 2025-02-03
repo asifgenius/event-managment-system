@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+        <?= htmlspecialchars($title ?? 'My App') ?>
+    </title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="/event_managment/public/css/bootstrap/bootstrap-theme.css">
+    <link rel="stylesheet" type="text/css" href="/event_managment/public/css/bootstrap/bootstrap-theme.css.map">
+    <link rel="stylesheet" type="text/css" href="/event_managment/public/css/bootstrap/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="/event_managment/public/css/bootstrap/bootstrap.css.map">
+    <link rel="stylesheet" type="text/css" href="/event_managment/public/css/bootstrap/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="/event_managment/public/css/bootstrap/style.css">
+    <link rel="stylesheet" type="text/css" href="/event_managment/public/css/custom.css">
+    <link rel="stylesheet" type="text/css" href="/event_managment/public/css/sidebar.css">
+    <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css"
+        integrity="sha512-vKMx8UnXk60zUwyUnUPM3HbQo8QfmNx7+ltw8Pm5zLusl1XIfwcxo8DbWCqMGKaWeNxWA8yrx5v3SaVpMvR3CA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"
+        integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+</head>
+
+<body>
+    <header>
+
+        <?php
+        include __DIR__ . '/navbar.html'; 
+    ?>
+    </header>
+    <main class="d-flex ">
+        <div class="sidebar expanded" id="sidebar">
+            <ul class="nav flex-column">
+                <li class="nav-item">
+                    <a href="/event_managment/dashboard" class="nav-link"><i class="fa fa-tachometer mx-1"
+                            aria-hidden="true"></i> Dashboard</a>
+                </li>
+                <li class="nav-item">
+                </li>
+                <li class="nav-item dropdown">
+                    <a href="/event_managment/events" class="nav-link dropdown-toggle" href="#" role="button"
+                        data-bs-toggle="dropdown">Events Management</a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="/event_managment/events">Add Event</a></li>
+                        <li><a class="dropdown-item" href="/event_managment/dashboard">Event List</a></li>
+                    </ul>
+                </li>
+
+            </ul>
+        </div>
+
+        <script>
+            function toggleSidebar() {
+                document.getElementById("sidebar").classList.toggle("expanded");
+            }
+        </script>
+
+        <script>
+            document.addEventListener('DOMContentLoaded', function () {
+                const links = document.querySelectorAll('.sidebar-link');
+                const contentArea = document.getElementById('content-area');
+                links.forEach(link => {
+                    link.addEventListener('click', function (e) {
+                        e.preventDefault();
+                        const url = this.getAttribute('data-url');
+
+                        fetch(url)
+                            .then(response => response.text())
+                            .then(data => {
+                                contentArea.innerHTML = data;
+                            })
+                            .catch(error => {
+                                contentArea.innerHTML = '<p>Error loading content. Please try again later.</p>';
+                            });
+                    });
+                });
+            });
+        </script>
+        </div>
+        <div class="dashboard-container">
+            <div class="content ">
+                <?= $content ?>
+            </div>
+            <?php
+            include __DIR__ . '/../footer.html'; 
+        ?>
+        </div>
+    </main>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"
+        integrity="sha512-VEd+nq25CkR676O+pLBnDW09R7VQX9Mdiij052gVCp5yVH3jGtH70Ho/UUv4mJDsEdTvqRCFZg0NKGiojGnUCw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="/event_managment/public/js/bootstrap/bootstrap.min.js"></script>
+    <script src="/event_managment/public/js/bootstrap/bootstrap.bundle.min.js"></script>
+    <script src="/event_managment/public/js/js.js"></script>
+
+</body>
+
+</html>
