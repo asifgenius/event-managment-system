@@ -1,0 +1,24 @@
+<?php 
+ob_start();
+?>
+<h2 class="text-center">View Event</h2>
+
+<form id="registerForm" class="mt-5 p-5 border ">
+    <input type="hidden" id="eventId" value="<?php echo $eventId ?>">
+
+    <p><strong>Title:</strong> <span id="eventTitle"></span></p>
+    <p><strong>Description:</strong> <span id="eventDescription"></span></p>
+    <p><strong>Location:</strong> <span id="eventLocation"></span></p>
+    <p><strong>Duration:</strong> <span id="eventDuration"></span></p>
+    <p><strong>Max Capacity:</strong> <span id="eventMaxCapacity"></span></p>
+    <p><strong>Current Attendees:</strong> <span id="eventCurrentCapacity"></span></p>
+
+    <input type="hidden" id="eventId" value="<?php echo isset($event['id']) ? $event['id'] : ''; ?>">
+
+</form>
+<script src="../public/js/ajax/view-event.js"></script>
+
+<?php
+    $content = ob_get_clean(); 
+    include __DIR__ . '/layout/dashboard_layout.html'; 
+?>
