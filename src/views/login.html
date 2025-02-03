@@ -1,0 +1,28 @@
+<?php 
+ob_start();
+?>
+<div class="d-flex justify-content-center">
+    <form method="POST" class="loginForm rounded-3 form-shadow  p-4 border w-25" id="loginForm">
+        <h2 class="text-center">Login</h2>
+        <div class="mb-3">
+            <label for="email">Email:</label>
+            <input type="email" class="form-control" id="email" name="email" required>
+        </div>
+        <div class="mb-3">
+            <label for="password">Password:</label><br>
+            <input type="password" class="form-control" id="password" name="password" required>
+        </div>
+        <button id="submit" class="btn btn-primary form-control mt-3" type="submit">Submit</button>
+        <p class="mt-4">Have not register yet? <a href="/event_managment/registration">click here</a></p>
+
+        <p id="errorMessage" style="color: red; display: none;"></p>
+    </form>
+</div>
+
+<script src="public/js/ajax/login.js"></script>
+
+
+<?php
+    $content = ob_get_clean(); 
+    include __DIR__ . '/layout/layout.html'; // Adjusted the path
+?>
