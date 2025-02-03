@@ -41,9 +41,6 @@ class AuthController
             ]);
         }
         exit();
-
-
-
     }
 
     public function getRegistration()
@@ -62,7 +59,7 @@ class AuthController
 
         if (!$email) {
             $_SESSION['error'] = "Invalid email format.";
-            header('Location: register.php');
+            header('Location: /event_managment/registration');
             exit();
         }
 
@@ -104,7 +101,6 @@ class AuthController
             }
 
         } catch (PDOException $e) {
-            // Database error handling
             $_SESSION['error'] = "Database Error: " . $e->getMessage();
             echo json_encode([
                 'success' => false,
@@ -112,7 +108,6 @@ class AuthController
             ]);
             exit();
         }
-
 
     }
     public function logout()

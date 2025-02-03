@@ -25,7 +25,7 @@ class AdminController
 
         $totalEvents = $eventService->count();
         $totalPages = ceil($totalEvents / $limit);
-
+        
         echo json_encode([
             'events' => $events,
             'totalPages' => $totalPages

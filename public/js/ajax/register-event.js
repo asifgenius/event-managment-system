@@ -1,5 +1,5 @@
 $(document).ready(function () {
- 
+
   var eventId = document.getElementById("eventId").value;
 
   $.ajax({
@@ -73,7 +73,7 @@ $(document).ready(function () {
         if (response.status === "success") {
           successMessageNotify(response.message);
         } else {
-          successMessageNotify(response.error);
+          errorMessageNotify(response.error);
         }
       },
       error: function (xhr, status, error) {

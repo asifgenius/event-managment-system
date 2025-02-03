@@ -12,10 +12,13 @@ ob_start();
         <li class="nav-item dropdown">
             <a href="/event_managment/events" class="nav-link dropdown-toggle" href="#" role="button"
                 data-bs-toggle="dropdown">Events Management</a>
-            <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="/event_managment/events">Add Event</a></li>
-                <li><a class="dropdown-item" href="/event_managment/dashboard">Event List</a></li>
-            </ul>
+                <ul class="dropdown-menu">
+                    <?php 
+                    if ($_SESSION['role'] === 'admin') : ?>
+                        <li><a class="dropdown-item" href="/event_managment/events">Add Event</a></li>
+                    <?php endif; ?>
+                    <li><a class="dropdown-item" href="/event_managment/dashboard">Event List</a></li>
+                </ul>
         </li>
 
     </ul>

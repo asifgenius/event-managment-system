@@ -13,6 +13,7 @@ class EventController
 
     public function index()
     {
+        authGaurd('admin');
         require_once __DIR__ . '/../views/form/event.html';
     }
 
@@ -137,7 +138,7 @@ class EventController
             if ($eventService->registerUser($eventId, $userId)) {
                 echo json_encode(['status' => 'success', 'message' => 'Registration successful!']);
             } else {
-                echo json_encode(['error' => 'Error occurred while registering the user.']);
+                echo json_encode(['error' => 'You are already registered for this event.']);
             }
         } catch (Exception $e) {
             echo json_encode(['error' => 'Error: ' . $e->getMessage()]);

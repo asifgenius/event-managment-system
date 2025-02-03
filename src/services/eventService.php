@@ -5,7 +5,6 @@ class EventService extends BaseService
 {
     protected $tableName = 'events';
 
-
     public function createEvent(array $data)
     {
 
@@ -43,9 +42,9 @@ class EventService extends BaseService
 
     public function getEventById($id)
     {
-        $sql = "SELECT e.*, u.name AS creator 
-                FROM events e 
-                JOIN users u ON e.created_by = u.id 
+        $sql = "SELECT e.*, u.name AS creator
+                FROM events e
+                JOIN users u ON e.created_by = u.id
                 WHERE e.id = :id";
         $stmt = $this->connect->prepare($sql);
         $stmt->execute(['id' => $id]);
@@ -102,7 +101,6 @@ class EventService extends BaseService
         return $stmt->fetch(PDO::FETCH_ASSOC);
     }
 
-
     public function getAttendees($eventId)
     {
         try {
@@ -144,7 +142,6 @@ class EventService extends BaseService
         return $attendees;
     }
 
-
     public function generateAttendeeCSV($eventId)
     {
         $attendees = $this->getEventAttendees($eventId);
@@ -168,7 +165,7 @@ class EventService extends BaseService
                 $attendee['user_name'],
                 $attendee['email'],
                 $attendee['phone'],
-                $attendee['registration_date']
+                $attendee['registration_date'],
             ]);
         }
 
@@ -176,4 +173,3 @@ class EventService extends BaseService
         exit();
     }
 }
-?>
