@@ -1,0 +1,73 @@
+<?php 
+ob_start();
+?>
+<div id="message" class="alert d-none"></div> 
+
+<div id="successMessage" class="alert alert-success d-none">
+    Event updated successfully!
+</div>
+<div class="d-flex justify-content-center">
+    <form id="updateEventForm" class="rounded-3 p-4 border w-25 ">
+        <h2 class="text-center">Update Event</h2>
+        <input type="hidden" id="eventId" value="<?php echo $eventId ?>">
+        <div class="form-group">
+            <label>Title:</label>
+            <input class="form-control" placeholder="Enter Title" type="text" name="title"
+                value="<?php echo htmlspecialchars($event['title'] ?? ''); ?>" required>
+        </div>
+
+        <div class="form-group">
+            <label>Description:</label>
+            <textarea class="form-control" placeholder="Description" name="description"
+                required><?php echo htmlspecialchars($event['description'] ?? ''); ?></textarea>
+        </div>
+
+        <div class="form-group">
+            <label>Start Date:</label>
+            <input class="form-control" type="datetime-local" name="start_date"
+                value="<?php echo isset($event['start_date']) ? date('Y-m-d\TH:i', strtotime($event['start_date'])) : ''; ?>"
+                required>
+        </div>
+
+        <div class="form-group">
+            <label>End Date:</label>
+            <input class="form-control" type="datetime-local" name="end_date"
+                value="<?php echo isset($event['end_date']) ? date('Y-m-d\TH:i', strtotime($event['end_date'])) : ''; ?>"
+                required>
+        </div>
+
+        <div class="form-group">
+            <label>Location:</label>
+            <input class="form-control" placeholder="Location" type="text" name="location"
+                value="<?php echo htmlspecialchars($event['location'] ?? ''); ?>" required>
+        </div>
+
+        <div class="form-group">
+            <label>Price:</label>
+            <input class="form-control" placeholder="Price" type="number" name="price"
+                value="<?php echo $event['price'] ?? ''; ?>" required>
+        </div>
+
+        <div class="form-group">
+            <label>Duration (minutes):</label>
+            <input class="form-control" placeholder="Duration" type="number" name="duration"
+                value="<?php echo $event['duration'] ?? ''; ?>" required>
+        </div>
+
+        <div class="form-group">
+            <label>Max Capacity:</label>
+            <input class="form-control" placeholder="Max Capacity" type="number" name="max_capacity"
+                value="<?php echo $event['max_capacity'] ?? ''; ?>" required>
+        </div>
+
+        <div class="d-flex justify-content-center">
+            <button class="btn btn-primary mt-5" type="submit">Update Event</button>
+        </div>
+    </form>
+</div>
+<script src="../public/js/ajax/update-event.js"></script>
+
+<?php
+    $content = ob_get_clean(); 
+    include __DIR__ . '/../layout/dashboard_layout.html'; 
+?>
