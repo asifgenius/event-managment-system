@@ -1,0 +1,39 @@
+<?php 
+ob_start();
+?>
+
+<div class="d-flex justify-content-center ">
+    <form method="POST" class=" rounded-3 p-4 form-shadow border w-25" id="registrationForm">
+        <h2 class="text-center">Register</h2>
+        <div class="mb-3">
+            <label for="name">Name:</label><br>
+            <input class="form-control mb-0" type="text" name="name" required>
+        </div>
+        <div class="mb-3">
+            <label for="email">Email:</label><br>
+            <input class="form-control" type="email" name="email" required>
+        </div>
+        <div class="mb-3">
+            <label for="phone">Phone:</label><br>
+            <input class="form-control" type="text" name="phone" required>
+        </div>
+        <div class="mb-3">
+            <label for="password">Password:</label><br>
+            <input class="form-control" type="password" name="password" required>
+        </div>
+        <div class="mb-3">
+            <label for="password_confirm">Confirm Password:</label><br>
+            <input class="form-control" type="password" name="password_confirm" required>
+        </div>
+        <div>
+            <button class="btn btn-primary form-control mt-3" type="submit">Register</button>
+            <p class="mt-4">Already have an account? <a href="/event_managment/">click here</a></p>
+        </div>
+        <p id="errorMessage" style="color: red; display: none;"></p>
+    </form>
+</div>
+<script src="public/js/ajax/registration.js"></script>
+
+<?php
+$content = ob_get_clean(); 
+include __DIR__ . '/layout/layout.html'; // Adjusted the path
